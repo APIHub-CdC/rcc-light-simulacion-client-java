@@ -422,7 +422,7 @@ public class ApiClient {
 			}
 		}
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static OkHttpClient getClientNoSSLVerification() {
 		try {
@@ -446,8 +446,7 @@ public class ApiClient {
 			final SSLContext sslContext = SSLContext.getInstance("SSL");
 			sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 			final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-			Builder okHttpClient = new OkHttpClient().newBuilder()
-					.sslSocketFactory(sslSocketFactory)
+			Builder okHttpClient = new OkHttpClient().newBuilder().sslSocketFactory(sslSocketFactory)
 					.hostnameVerifier(new HostnameVerifier() {
 						@Override
 						public boolean verify(String hostname, SSLSession session) {
