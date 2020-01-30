@@ -16,8 +16,8 @@ import io.apihub.client.model.Consultas;
 import io.apihub.client.model.Creditos;
 import io.apihub.client.model.Domicilios;
 import io.apihub.client.model.Empleos;
-import io.apihub.client.model.PersonaPeticion;
-import io.apihub.client.model.PersonasPLD;
+import io.apihub.client.model.Mensajes;
+import io.apihub.client.model.Persona;
 import io.apihub.client.model.Respuesta;
 import io.apihub.client.model.Scores;
 
@@ -27,14 +27,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RCCLightFicodcorePldApi {
+public class ReporteDeCrditoConsolidadoLightConFicoScoreApi {
 	private ApiClient apiClient;
 
-	public RCCLightFicodcorePldApi() {
+	public ReporteDeCrditoConsolidadoLightConFicoScoreApi() {
 		this(Configuration.getDefaultApiClient());
 	}
 
-	public RCCLightFicodcorePldApi(ApiClient apiClient) {
+	public ReporteDeCrditoConsolidadoLightConFicoScoreApi(ApiClient apiClient) {
 		this.apiClient = apiClient;
 	}
 
@@ -286,11 +286,11 @@ public class RCCLightFicodcorePldApi {
 		return apiClient.execute(call, localVarReturnType);
 	}
 
-	public okhttp3.Call getPLDCall(String folioConsulta, String xApiKey,
+	public okhttp3.Call getMensajesCall(String folioConsulta, String xApiKey,
 			final ProgressResponseBody.ProgressListener progressListener,
 			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = null;
-		String localVarPath = "/{folioConsulta}/pld".replaceAll("\\{" + "folioConsulta" + "\\}",
+		String localVarPath = "/{folioConsulta}/mensajes".replaceAll("\\{" + "folioConsulta" + "\\}",
 				apiClient.escapeString(folioConsulta.toString()));
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
 		List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -320,33 +320,33 @@ public class RCCLightFicodcorePldApi {
 				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
-	private okhttp3.Call getPLDValidateBeforeCall(String folioConsulta, String xApiKey,
+	private okhttp3.Call getMensajesValidateBeforeCall(String folioConsulta, String xApiKey,
 			final ProgressResponseBody.ProgressListener progressListener,
 			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		if (folioConsulta == null) {
-			throw new ApiException("Missing the required parameter 'folioConsulta' when calling getPLD(Async)");
+			throw new ApiException("Missing the required parameter 'folioConsulta' when calling getMensajes(Async)");
 		}
 		if (xApiKey == null) {
-			throw new ApiException("Missing the required parameter 'xApiKey' when calling getPLD(Async)");
+			throw new ApiException("Missing the required parameter 'xApiKey' when calling getMensajes(Async)");
 		}
 
-		okhttp3.Call call = getPLDCall(folioConsulta, xApiKey, progressListener, progressRequestListener);
+		okhttp3.Call call = getMensajesCall(folioConsulta, xApiKey, progressListener, progressRequestListener);
 		return call;
 	}
 
-	public PersonasPLD getPLD(String folioConsulta, String xApiKey) throws ApiException {
-		ApiResponse<PersonasPLD> resp = getPLDWithHttpInfo(folioConsulta, xApiKey);
+	public Mensajes getMensajes(String folioConsulta, String xApiKey) throws ApiException {
+		ApiResponse<Mensajes> resp = getMensajesWithHttpInfo(folioConsulta, xApiKey);
 		return resp.getData();
 	}
 
-	public ApiResponse<PersonasPLD> getPLDWithHttpInfo(String folioConsulta, String xApiKey) throws ApiException {
-		okhttp3.Call call = getPLDValidateBeforeCall(folioConsulta, xApiKey, null, null);
-		Type localVarReturnType = new TypeToken<PersonasPLD>() {
+	public ApiResponse<Mensajes> getMensajesWithHttpInfo(String folioConsulta, String xApiKey) throws ApiException {
+		okhttp3.Call call = getMensajesValidateBeforeCall(folioConsulta, xApiKey, null, null);
+		Type localVarReturnType = new TypeToken<Mensajes>() {
 		}.getType();
 		return apiClient.execute(call, localVarReturnType);
 	}
 
-	public okhttp3.Call getReporteCall(String xApiKey, PersonaPeticion body, Boolean xFullReport,
+	public okhttp3.Call getReporteCall(String xApiKey, Persona body, Boolean xFullReport,
 			final ProgressResponseBody.ProgressListener progressListener,
 			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		Object localVarPostBody = body;
@@ -381,7 +381,7 @@ public class RCCLightFicodcorePldApi {
 				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
 	}
 
-	private okhttp3.Call getReporteValidateBeforeCall(String xApiKey, PersonaPeticion body, Boolean xFullReport,
+	private okhttp3.Call getReporteValidateBeforeCall(String xApiKey, Persona body, Boolean xFullReport,
 			final ProgressResponseBody.ProgressListener progressListener,
 			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 		if (xApiKey == null) {
@@ -395,12 +395,12 @@ public class RCCLightFicodcorePldApi {
 		return call;
 	}
 
-	public Respuesta getReporte(String xApiKey, PersonaPeticion body, Boolean xFullReport) throws ApiException {
+	public Respuesta getReporte(String xApiKey, Persona body, Boolean xFullReport) throws ApiException {
 		ApiResponse<Respuesta> resp = getReporteWithHttpInfo(xApiKey, body, xFullReport);
 		return resp.getData();
 	}
 
-	public ApiResponse<Respuesta> getReporteWithHttpInfo(String xApiKey, PersonaPeticion body, Boolean xFullReport)
+	public ApiResponse<Respuesta> getReporteWithHttpInfo(String xApiKey, Persona body, Boolean xFullReport)
 			throws ApiException {
 		okhttp3.Call call = getReporteValidateBeforeCall(xApiKey, body, xFullReport, null, null);
 		Type localVarReturnType = new TypeToken<Respuesta>() {
